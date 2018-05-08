@@ -1,0 +1,41 @@
+
+<html>
+<head>
+<title>Test page for utm-tagging</title>
+<script>
+
+function getParameterByName(name) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&amp;]" + name + "=([^&amp;#]*)"),
+        results = regex.exec(location.search);
+    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+// Give the URL parameters variable names
+var source = getParameterByName('utm_source');
+var medium = getParameterByName('utm_medium');
+var campaign = getParameterByName('utm_campaign');
+
+</script>
+<script>
+document.cookie('name', 'value');
+
+// Set the cookies
+if(document.cookie('utm_source') == null || document.cookie('utm_source') == "") {
+document.cookie('utm_source', source);
+}
+if(document.cookie('utm_medium') == null || document.cookie('utm_medium') == "") {
+document.cookie('utm_medium', medium);
+}
+if(document.cookie('utm_campaign') == null || document.cookie('utm_campaign') == "") {
+document.cookie('utm_campaign', campaign);
+}
+</script>
+</head)
+<body>
+<h1>Hello world</h1>
+
+
+</body>
+
+
+</html>
